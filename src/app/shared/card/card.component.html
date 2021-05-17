@@ -1,0 +1,12 @@
+  <div class="card" *ngFor="let item of items;let index = i">
+    <img *ngIf="item.location" [src]="item.location" class="img-fluid card-img-top p-2" [alt]="item.description">
+    <div class="card-body">
+      <h5 *ngIf="item.title" class="card-title text-center">{{item.title}}</h5>
+      <p *ngIf="item.description" class="card-text h-90">{{item.description}}</p>
+      <p *ngIf="item.text" class="card-text h-90">{{item.text}}</p>
+      <div class="text-center pt-2 mb-3">
+        <button *ngIf="hasButton" type="button" class="btn btn-primary w-80">View details</button>
+      </div>
+    </div>
+  </div>
+

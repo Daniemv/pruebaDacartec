@@ -1,0 +1,12 @@
+$height-max: 500px;
+
+#carouselExampleCaptions {
+  height: $height-max;
+  width: auto;
+  overflow: hidden;
+  margin: 5px;
+}
+
+img {
+  height: $height-max;
+}
