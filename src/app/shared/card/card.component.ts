@@ -12,10 +12,17 @@ export class CardComponent implements OnInit {
   @Input() items: ProductInterface[] | ClaimInterface[] = [];
   @Input() hasButton: boolean;
 
+  showModal = false;
+  indexSelected: number;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openModal(index: number) {
+    this.showModal = true;
+    this.indexSelected = index;
   }
 
 }

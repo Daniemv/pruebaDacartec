@@ -1,4 +1,4 @@
 export interface BannerInterface {
-  text: string;
+  text?: string;
   location: string;
 }

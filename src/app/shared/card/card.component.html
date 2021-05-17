@@ -1,12 +1,14 @@
-  <div class="card" *ngFor="let item of items;let index = i">
+  <div class="card" *ngFor="let item of items;let index = index">
     <img *ngIf="item.location" [src]="item.location" class="img-fluid card-img-top p-2" [alt]="item.description">
     <div class="card-body">
-      <h5 *ngIf="item.title" class="card-title text-center">{{item.title}}</h5>
-      <p *ngIf="item.description" class="card-text h-90">{{item.description}}</p>
-      <p *ngIf="item.text" class="card-text h-90">{{item.text}}</p>
+      <h4 *ngIf="item.title" class="card-title text-center">{{item.title}} - {{item.order}}</h4>
+      <p *ngIf="item.description" class="card-text h-85">{{item.description}}</p>
+      <p *ngIf="item.text" class="card-text h-85">{{item.text}}</p>
+      <!-- PENDIENTE AÑADIR LAS CATEGORIAS -->
       <div class="text-center pt-2 mb-3">
-        <button *ngIf="hasButton" type="button" class="btn btn-primary w-80">View details</button>
+        <button *ngIf="hasButton" type="button" class="btn btn-primary w-80" data-toggle="modal" data-target="#detailmodal" data-backdrop="static" (click)="openModal(index)">View details</button>
       </div>
     </div>
   </div>
 
+<app-modal *ngIf="showModal" [index]="indexSelected"></app-modal>

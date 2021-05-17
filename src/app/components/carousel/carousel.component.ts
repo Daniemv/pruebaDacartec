@@ -9,11 +9,10 @@ import { BannerInterface } from 'src/app/interfaces/banner.interface';
 export class CarouselComponent implements OnChanges {
 
   @Input() carouselData: BannerInterface[];
-
-  constructor() { }
+  @Input() id: string;
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
     this.carouselData = changes.carouselData.currentValue;
   }
-
 }

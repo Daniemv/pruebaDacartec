@@ -1,4 +1,3 @@
-import { MainInterface } from './interfaces/main.interface';
 import { Component } from '@angular/core';
 import { SourceDataService } from './services/source-data.service';
 import { BannerInterface } from './interfaces/banner.interface';

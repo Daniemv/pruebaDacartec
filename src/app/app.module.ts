@@ -8,6 +8,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductComponent } from './components/product/product.component';
 import { ClaimComponent } from './components/claim/claim.component';
 import { CardComponent } from './shared/card/card.component';
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CardComponent } from './shared/card/card.component';
     CarouselComponent,
     ProductComponent,
     ClaimComponent,
-    CardComponent
+    CardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

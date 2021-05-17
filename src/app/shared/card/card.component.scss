@@ -1,5 +1,17 @@
-.h-90 {
-  height: 90%;
+.h-85 {
+  height: 85%;
+}
+
+@media (max-width: 992px) {
+  .h-85 {
+    height: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .h-85 {
+    height: 92%;
+  }
 }
 
 .w-80 {

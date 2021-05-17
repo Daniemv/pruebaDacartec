@@ -1,22 +1,18 @@
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" *ngFor="let carousel of carouselData;let index = index"
-      [attr.data-slide-to]="index"></li>
-  </ol>
+<div [id]="id" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item" *ngFor="let carousel of carouselData;let index = index;let isFirst = first"
       [ngClass]="{active:isFirst}">
       <img [src]="carousel.location" class="d-block w-100" [alt]="carousel.text">
       <div class="carousel-caption d-none d-md-block">
-        <h5>{{carousel.text}}</h5>
+        <h5><pre class="text-white">{{carousel.text}}</pre></h5>
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+  <a class="carousel-control-prev" [href]="'#'+id" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Anterior</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+  <a class="carousel-control-next" [href]="'#'+id" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Siguiente</span>
   </a>
