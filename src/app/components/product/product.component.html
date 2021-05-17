@@ -1,13 +1,2 @@
-<div class="row mt-2">
-  <div class="col-md-4 col-sm-12">
-    <div class="input-group mb-3 ">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">@</span>
-      </div>
-      <input #term (keyup)="searchProduct(term.value)" type="text" class="form-control" placeholder="Buscar producto..." aria-label="Buscar producto" aria-describedby="basic-addon1">
-    </div>
-  </div>
-
-
-</div>
+<app-searcher [(productData)]="productData" [(originalProductData)]="originalProductData"></app-searcher>
 <app-card class="card-deck  mt-2 mb-2" [items]="productData" [hasButton]="true"></app-card>

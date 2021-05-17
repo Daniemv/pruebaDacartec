@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -7,23 +8,21 @@ import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductComponent } from './components/product/product.component';
 import { ClaimComponent } from './components/claim/claim.component';
-import { CardComponent } from './shared/card/card.component';
-import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarouselComponent,
     ProductComponent,
-    ClaimComponent,
-    CardComponent,
-    ModalComponent
+    ClaimComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
+  exports: [SharedModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
