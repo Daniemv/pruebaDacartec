@@ -12,6 +12,7 @@ export class SearcherComponent implements OnInit {
   @Input() originalProductData: ProductInterface[];
 
   @Output() productDataChange = new EventEmitter();
+  @Output() showNoProducts = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -27,9 +28,11 @@ export class SearcherComponent implements OnInit {
     } else if (termToSearch.length === 0) {
       this.productData = this.originalProductData;
       this.productDataChange.emit(this.productData);
+      this.showNoProducts.emit(false);
     } else {
       this.productData = [];
       this.productDataChange.emit(this.productData);
+      this.showNoProducts.emit(true);
     }
   }
 
@@ -43,9 +46,11 @@ export class SearcherComponent implements OnInit {
         newProductDataCollection.push(product);
         this.productData = newProductDataCollection;
         this.productDataChange.emit(this.productData);
+        this.showNoProducts.emit(false);
       } else {
         this.productData = newProductDataCollection;
         this.productDataChange.emit(this.productData);
+        this.showNoProducts.emit(true);
       }
     });
   }

@@ -1,6 +1,17 @@
-  <div class="col-md-4 col-sm-12 d-inline-block mt-3">
-    <h4 class="center-text">Products</h4>
+<div class="col-md-4 col-sm-12 d-inline-block mt-3">
+  <h4 class="center-text form-control">Products</h4>
+</div>
+<app-searcher (showNoProducts)="setNoProducts($event)" [(productData)]="productData"
+  [(originalProductData)]="originalProductData"></app-searcher>
+<app-category-filter [(productData)]="productData" [originalProductDataCollection]="originalProductData">
+</app-category-filter>
+<app-card *ngIf="!showNoProducts; else noProducts" [items]="productData" [hasButton]="true"></app-card>
+
+<ng-template #noProducts>
+  <div class="jumbotron ">
+    <div class="container">
+      <h1 class="display-4 text-center">Sorry :(</h1>
+      <p class="lead">There are no products that contain this description.</p>
+    </div>
   </div>
-  <app-searcher [(productData)]="productData" [(originalProductData)]="originalProductData"></app-searcher>
-  <app-category-filter [(productData)]="productData" [originalProductDataCollection]="originalProductData"></app-category-filter>
-<app-card [items]="productData" [hasButton]="true"></app-card>
+</ng-template>

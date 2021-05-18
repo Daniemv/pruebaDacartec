@@ -11,10 +11,16 @@ export class ProductComponent implements OnChanges {
   @Input() productData: ProductInterface[] = [];
   originalProductData: ProductInterface[] = [];
 
+  showNoProducts = false;
+
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
     this.productData = changes.productData.currentValue;
     this.originalProductData = [...this.productData];
+  }
+
+  setNoProducts(show: boolean): void {
+    this.showNoProducts = show;
   }
 }
