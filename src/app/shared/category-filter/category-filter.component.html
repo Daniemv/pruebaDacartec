@@ -1,0 +1,11 @@
+<div class="col-md-4 col-sm-12 d-inline-block mt-3">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Categories</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect01" (change)="selectCategory($event.target.value)">
+      <option selected>Search a category...</option>
+      <option *ngFor="let category of productCategoryCollection" [value]="category">{{category | titlecase}}</option>
+    </select>
+  </div>
+</div>

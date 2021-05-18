@@ -6,6 +6,7 @@ import { SearcherComponent } from '../searcher/searcher.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { CategoryFilterComponent } from '../category-filter/category-filter.component';
 
 
 
@@ -13,7 +14,8 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [
     CardComponent,
     ModalComponent,
-    SearcherComponent
+    SearcherComponent,
+    CategoryFilterComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { BrowserModule } from '@angular/platform-browser';
   exports: [
     CardComponent,
     ModalComponent,
-    SearcherComponent
+    SearcherComponent,
+    CategoryFilterComponent
   ]
 })
 export class SharedModule { }
