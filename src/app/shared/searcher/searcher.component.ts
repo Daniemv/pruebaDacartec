@@ -12,7 +12,6 @@ export class SearcherComponent implements OnInit {
   @Input() originalProductData: ProductInterface[];
 
   @Output() productDataChange = new EventEmitter();
-  @Output() originalProductDataChange = new EventEmitter();
 
   constructor() { }
 
@@ -35,18 +34,24 @@ export class SearcherComponent implements OnInit {
   }
 
 
-  search(arraySearch: ProductInterface[],termToSearch: string) {
+  search(arraySearch: ProductInterface[], termToSearch: string) {
+    termToSearch = this.removeBlakSpaces(termToSearch);
     const newProductDataCollection: ProductInterface[] = [];
     arraySearch.forEach(product => {
-      if (product.description.toLowerCase().includes(termToSearch.toLowerCase())) {
+      let description = this.removeBlakSpaces(product.description);
+      if (description.toLowerCase().includes(termToSearch.trim().toLowerCase())) {
         newProductDataCollection.push(product);
         this.productData = newProductDataCollection;
         this.productDataChange.emit(this.productData);
       } else {
-        this.productData = [];
+        this.productData = newProductDataCollection;
         this.productDataChange.emit(this.productData);
       }
     });
+  }
+
+  removeBlakSpaces(term: string): string {
+    return term.replace(/\s/g,"");
   }
 
 }

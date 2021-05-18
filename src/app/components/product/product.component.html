@@ -2,5 +2,5 @@
     <h4 class="center-text">Products</h4>
   </div>
   <app-searcher [(productData)]="productData" [(originalProductData)]="originalProductData"></app-searcher>
-  <app-category-filter [(productData)]="productData"></app-category-filter>
-<app-card class="card-deck mt-2 mb-2" [items]="productData" [hasButton]="true"></app-card>
+  <app-category-filter [(productData)]="productData" [originalProductDataCollection]="originalProductData"></app-category-filter>
+<app-card [items]="productData" [hasButton]="true"></app-card>

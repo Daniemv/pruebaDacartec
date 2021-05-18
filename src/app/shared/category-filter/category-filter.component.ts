@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class CategoryFilterComponent implements OnChanges {
 
   @Input() productData: ProductInterface[];
+  @Input() originalProductDataCollection: ProductInterface[];
   @Output() productDataChange = new EventEmitter();
   productCategoryCollection: string[] = [];
 
@@ -17,18 +18,25 @@ export class CategoryFilterComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.productData = changes.productData.currentValue;
+    if (changes.originalProductDataCollection)
+        this.originalProductDataCollection = changes.originalProductDataCollection.currentValue;
     this.groupCategories();
   }
 
   selectCategory(categorySelected: string): void {
     let productsHaveCategorySelected: ProductInterface[] = [];
+    if (this.productData.length !== this.originalProductDataCollection.length) {
+      this.productData = this.originalProductDataCollection;
+    }
     this.productData.forEach(product => {
       if (product.categories.includes(categorySelected)) {
         productsHaveCategorySelected.push(product);
       }
     });
-    console.log(productsHaveCategorySelected);
     this.productDataChange.emit(productsHaveCategorySelected);
+    if (categorySelected === "") {
+      this.productDataChange.emit(this.originalProductDataCollection);
+    }
   }
 
   groupCategories(): void {

@@ -1,7 +1,6 @@
 import { BannerInterface } from './../../interfaces/banner.interface';
 import { DetailInterface } from './../../interfaces/detail.interface';
-import { Component, Input, OnInit } from '@angular/core';
-import { ProductInterface } from 'src/app/interfaces/product.interface';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ModalMapper } from 'src/app/mappers/modal-mapper';
 import { SourceDataService } from 'src/app/services/source-data.service';
 
@@ -10,20 +9,17 @@ import { SourceDataService } from 'src/app/services/source-data.service';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnChanges {
 
   @Input() itemDetail: DetailInterface;
   @Input() index: number;
 
   loading = false;
   carouselData: BannerInterface[] = [];
-  destroy = false;
 
-  constructor(private sourceDataService: SourceDataService, private modalMapper: ModalMapper) {
-    this.destroy = true;
-  }
+  constructor(private sourceDataService: SourceDataService, private modalMapper: ModalMapper) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.getModalData(this.index);
   }
 
@@ -33,6 +29,9 @@ export class ModalComponent implements OnInit {
       this.itemDetail = data;
       this.itemDetail.features = this.itemDetail.features.sort(((item1, item2) => item1.order - item2.order));
       this.carouselData = this.modalMapper.transformDetailDataToCarouselData(data);
+     if (this.carouselData.length === 0) {
+        this.carouselData = [{location: '/assets/not_found_image.jpg'}];
+      }
       this.loading = false;
     });
   }

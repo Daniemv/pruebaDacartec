@@ -4,7 +4,7 @@
       <label class="input-group-text" for="inputGroupSelect01">Categories</label>
     </div>
     <select class="custom-select" id="inputGroupSelect01" (change)="selectCategory($event.target.value)">
-      <option selected>Search a category...</option>
+      <option selected value="">Search a category...</option>
       <option *ngFor="let category of productCategoryCollection" [value]="category">{{category | titlecase}}</option>
     </select>
   </div>
