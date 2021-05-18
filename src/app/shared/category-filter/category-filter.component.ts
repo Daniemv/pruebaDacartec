@@ -13,7 +13,6 @@ export class CategoryFilterComponent implements OnChanges {
   @Output() productDataChange = new EventEmitter();
   productCategoryCollection: string[] = [];
 
-
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -43,7 +42,7 @@ export class CategoryFilterComponent implements OnChanges {
     this.productData.forEach(product => {
       product.categories.forEach(category => {
         this.productCategoryCollection.push(category);
-        this.productCategoryCollection = [... new Set(this.productCategoryCollection)];
+        this.productCategoryCollection = [... new Set(this.productCategoryCollection.sort())];
       });
     });
   }
